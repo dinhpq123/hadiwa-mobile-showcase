@@ -1,0 +1,14 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* body background được kiểm soát hoàn toàn bởi theme tokens trong index.html */
+body {
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  overflow: auto;
+  /* KHÔNG đặt background ở đây — để index.html style block kiểm soát qua var(--body-bg) */
+}
+body.prototype-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,20 @@
+/* CSS tự động ẩn các phần lặp khi chạy ở chế độ ?embed=1 */
+html[data-embed="true"],
+html[data-embed="true"] body {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--bg-app) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+html[data-embed="true"] .prototype-controls,
+html[data-embed="true"] .mobile-device,
+html[data-embed="true"] .status-bar,
+html[data-embed="true"] .mobile-notch,
+html[data-embed="true"] .floating-settings-btn,
+html[data-embed="true"] .mobile-tab-bar-wrapper {
+  display: none !important;
+}

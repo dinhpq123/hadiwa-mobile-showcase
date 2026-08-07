@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hadiwa Mobile Showcase — Navigation Hub</title>
+<style>
+  body { font-family: 'Inter', sans-serif; background: #0b0f1d; color: #fff; padding: 40px; }
+  h1 { color: #00F2FF; margin-bottom: 8px; }
+  p { color: #94A3B8; margin-bottom: 24px; font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .card { background: #141c33; border: 1px solid #202b48; border-radius: 16px; padding: 20px; text-decoration: none; color: inherit; transition: transform 0.2s, border-color 0.2s; }
+  .card:hover { transform: translateY(-3px); border-color: #7C3AED; }
+  .card-title { font-size: 16px; font-weight: 700; color: #FFFFFF; display: flex; align-items: center; justify-content: space-between; }
+  .card-desc { font-size: 12px; color: #94A3B8; margin-top: 6px; }
+  .badge { font-size: 10px; padding: 2px 8px; border-radius: 10px; background: rgba(0,242,255,0.15); color: #00F2FF; font-weight: 700; }
+</style>
+</head>
+<body>
+  <h1>📱 HADIWA MOBILE SHOWCASE — MPA HUB</h1>
+  <p>Kiến trúc Đa trang Độc lập (Multi-Page Architecture). Mỗi màn hình là một file HTML, CSS, JS và Mock riêng biệt.</p>
+
+  <div class="grid">
+    <a href="./screens/ai-assistant/index.html" class="card">
+      <div class="card-title">🤖 Trợ lý AI <span class="badge">Màn 1</span></div>
+      <div class="card-desc">Chatbot AI IOC, Mascot Circle Hero, Chips gợi ý, Composer Input.</div>
+    </a>
+
+    <a href="./screens/home/index.html" class="card">
+      <div class="card-title">🏠 Tổng Quan <span class="badge">Màn 2</span></div>
+      <div class="card-desc">Full 8 Sections: Header sếp Minh, Mascot Card, Alerts, 6 KPI Cards, Quick Actions.</div>
+    </a>
+
+    <a href="./screens/approvals/index.html" class="card">
+      <div class="card-title">📋 Phê Duyệt <span class="badge">Màn 3</span></div>
+      <div class="card-desc">Search Box, 4 Tab Trạng Thái (Chờ duyệt, Đã duyệt, Từ chối, Tất cả), Face ID footer.</div>
+    </a>
+
+    <a href="./screens/operations/index.html" class="card">
+      <div class="card-title">🛡️ Giám Sát <span class="badge">Màn 4</span></div>
+      <div class="card-desc">Giám sát công trình Hồ chứa Mỹ Đức, Trạm bơm Liên Mạc.</div>
+    </a>
+
+    <a href="./screens/account/index.html" class="card">
+      <div class="card-title">👤 Tài Khoản <span class="badge">Màn 5</span></div>
+      <div class="card-desc">Profile sếp Minh, Cấu hình sinh trắc học, Thông báo PCTT, Đồng bộ.</div>
+    </a>
+
+    <a href="./screens/approval-detail/index.html?id=TT-2026-001" class="card">
+      <div class="card-title">📄 Chi Tiết Tờ Trình <span class="badge">Stack Detail</span></div>
+      <div class="card-desc">Xem chi tiết tờ trình TT-2026-001 & xác thực Face ID.</div>
+    </a>
+
+    <a href="./screens/appearance-settings/index.html" class="card">
+      <div class="card-title">🎨 Cấu Hình Giao Diện <span class="badge">Settings</span></div>
+      <div class="card-desc">Chuyển đổi Brand Presets (EVG Green ⭐) & Light/Dark mode.</div>
+    </a>
+  </div>
+</body>
+</html>

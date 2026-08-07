@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="hadiwa-original" data-mode="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Hadiwa Mobile Showcase — Master Multi-Brand Theme</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<link rel="stylesheet" href="./themes/tokens.css">
+<link rel="stylesheet" href="./themes/modes/dark.css">
+<link rel="stylesheet" href="./themes/modes/light.css">
+<link rel="stylesheet" href="./themes/presets/all-presets.css">
+<link rel="stylesheet" href="./shared/css/reset.css">
+<link rel="stylesheet" href="./shell/shell.css">
+
+<style>
+/* ── Override nền tổng thể theo preset đang active ── */
+html, body {
+  margin: 0; padding: 0;
+}
+html {
+  background: var(--body-bg, #060E1A);
+  transition: background 0.4s ease;
+}
+body.prototype-page {
+  background: radial-gradient(
+    ellipse 140% 70% at 50% 0%,
+    var(--body-glow, rgba(0,200,255,0.15)) 0%,
+    var(--body-bg, #060E1A) 55%
+  );
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  transition: background 0.4s ease;
+}
+/* ── Prototype controls toolbar (Góc trên bên phải) ── */
+.prototype-controls {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end;
+  background: color-mix(in srgb, var(--bg-secondary) 92%, transparent);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--tabbar-border);
+  border-radius: 20px; padding: 8px 16px;
+  z-index: 9999;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.prototype-controls span { font-size: 11px; font-weight: 800; color: var(--primary); letter-spacing: 0.5px; white-space: nowrap; }
+.prototype-controls select {
+  background: var(--card-bg);
+  color: var(--text-main);
+  border: 1px solid var(--tabbar-border);
+  border-radius: 12px; padding: 6px 10px;
+  font-size: 11.5px; font-weight: 600; cursor: pointer; outline: none;
+  font-family: 'Inter', sans-serif;
+}
+.prototype-controls select:focus { border-color: var(--primary); }
+
+/* ── Color Builder Panel Style ── */
+.color-builder-panel {
+  display: none; align-items: center; gap: 8px;
+  background: rgba(0,0,0,0.3);
+  padding: 4px 8px; border-radius: 12px;
+  border: 1px solid var(--tabbar-border);
+}
+.color-picker-item {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 10px; font-weight: 700; color: var(--text-sub);
+}
+.color-picker-item input[type="color"] {
+  -webkit-appearance: none; border: none; width: 22px; height: 22px;
+  border-radius: 50%; cursor: pointer; background: transparent;
+}
+.color-picker-item input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+.color-picker-item input[type="color"]::-webkit-color-swatch { border: 1.5px solid rgba(255,255,255,0.4); border-radius: 50%; }
+</style>
+<script src="./shell/color-builder.js"></script>
+<script src="./shell/theme-controller.js"></script>
+</head>
+<body class="prototype-page">
+
+<div class="prototype-controls">
+  <span>📱 MULTI-BRAND SHOWCASE</span>
+  <select id="presetSelect" onchange="applyPreset(this.value)">
+    <option value="hadiwa-original">1. Hadiwa Nguyên bản</option>
+    <option value="violet-intelligence">2. Trí tuệ Tím</option>
+    <option value="ocean-technology">3. Hạ tầng Đại dương</option>
+    <option value="emerald-water">4. Nước Ngọc lục</option>
+    <option value="evg-green">5. EVG Xanh năng lượng ⭐</option>
+    <option value="sunset-operations">6. Vận hành Hoàng hôn</option>
+    <option value="graphite-gold">7. Lãnh đạo Than chì</option>
+    <option value="custom">🎨 Tự chọn màu thương hiệu (Custom)</option>
+  </select>
+  
+  <div id="colorBuilderPanel" class="color-builder-panel">
+    <div class="color-picker-item" title="Chọn 1 màu thương hiệu duy nhất — Tự động sinh toàn bộ bảng màu app">
+      <span>Màu thương hiệu:</span>
+      <input type="color" id="customPrimaryInput" value="#30BD6F" oninput="applyCustomColor(this.value)" onchange="applyCustomColor(this.value)">
+    </div>
+  </div>
+
+  <select id="modeSelect" onchange="applyMode(this.value)">
+    <option value="dark">Dark Mode</option>
+    <option value="light">Light Mode</option>
+  </select>
+</div>
+
+<div class="mobile-device">
+  <div class="status-bar">
+    <span>9:23</span>
+    <div style="display:flex;gap:4px">
+      <ion-icon name="cellular-outline" style="font-size:16px"></ion-icon>
+      <ion-icon name="wifi-outline" style="font-size:16px"></ion-icon>
+      <ion-icon name="battery-charging-outline" style="font-size:18px"></ion-icon>
+    </div>
+  </div>
+  <div class="mobile-notch"><div class="mobile-camera"></div></div>
+
+  <div class="mobile-app-viewport">
+    <iframe id="screenFrame" class="mobile-screen-frame" src="./screens/home/index.html?embed=1" title="Hadiwa Mobile Screen"></iframe>
+  </div>
+
+  <div class="mobile-tab-bar-wrapper">
+    <div class="mobile-tab-bar">
+      <div class="tab-item active" id="tab-home" onclick="navigateTo('home')">
+        <div class="tab-icon-box"><ion-icon name="home" style="font-size:22px"></ion-icon></div>
+        <span class="tab-label">TỔNG QUAN</span>
+      </div>
+      <div class="tab-item" id="tab-approvals" onclick="navigateTo('approvals')">
+        <div class="tab-icon-box"><ion-icon name="clipboard-outline" style="font-size:22px"></ion-icon></div>
+        <span class="tab-label">Phê duyệt</span>
+      </div>
+      <div class="tab-item-center" id="tab-ai-assistant" onclick="navigateTo('aiAssistant')">
+        <div class="center-mascot-ring">
+          <img src="./shared/assets/mascot-cwa-new.png" class="center-mascot-img" alt="Mascot CWA"/>
+        </div>
+        <span class="center-tab-label">Trợ lý AI</span>
+      </div>
+      <div class="tab-item" id="tab-operations" onclick="navigateTo('operations')">
+        <div class="tab-icon-box"><ion-icon name="shield-outline" style="font-size:22px"></ion-icon></div>
+        <span class="tab-label">Giám sát</span>
+      </div>
+      <div class="tab-item" id="tab-account" onclick="navigateTo('account')">
+        <div class="tab-icon-box"><ion-icon name="person-outline" style="font-size:22px"></ion-icon></div>
+        <span class="tab-label">Tài khoản</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./shell/route-map.js"></script>
+<script src="./shell/navigation-controller.js"></script>
+<script src="./shell/screen-bridge.js"></script>
+<script src="./shell/shell.js"></script>
+</body>
+</html>

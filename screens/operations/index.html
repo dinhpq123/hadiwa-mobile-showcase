@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Hadiwa — Giám Sát</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="../../shared/js/theme-receiver.js"></script>
+<link rel="stylesheet" href="../../themes/presets/all-presets.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--bg-app); }
+body { width: 100%; background: var(--bg-app); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+.screen { padding: 14px; }
+
+.ops-header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.icon-sq { width: 40px; height: 40px; border-radius: 12px; background: var(--primary-soft); border: 1px solid var(--primary); display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--primary); }
+.header-title { font-size: 18px; font-weight: 700; color: var(--text-main); }
+.header-sub { font-size: 11px; color: var(--text-sub); }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); display: inline-block; margin-right: 4px; animation: blink 1.5s infinite; }
+@keyframes blink { 0%,100% { opacity:1 } 50% { opacity:0.3 } }
+
+.stats-row { display: flex; gap: 10px; margin-bottom: 16px; }
+.stat-card { flex: 1; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 12px; text-align: center; }
+.stat-val { font-size: 18px; font-weight: 700; font-family: 'Roboto Mono', monospace; color: var(--text-main); }
+.stat-unit { font-size: 10px; font-weight: 600; color: var(--text-sub); }
+.stat-lbl { font-size: 9.5px; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px; }
+
+.section-title { font-size: 14px; font-weight: 700; color: var(--text-main); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.station-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 14px; margin-bottom: 12px; }
+.station-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.station-name { font-size: 14px; font-weight: 700; color: var(--text-main); }
+.status-online { padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.4); color: var(--success); }
+.status-warning { padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.4); color: var(--warning); }
+.status-offline { padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: var(--danger); }
+.station-metrics { display: flex; gap: 8px; }
+.metric-mini { flex: 1; background: var(--bg-secondary); border-radius: 12px; padding: 8px; text-align: center; border: 1px solid var(--card-border); }
+.metric-mini-val { font-size: 13px; font-weight: 700; color: var(--text-main); font-family: 'Roboto Mono', monospace; }
+.metric-mini-lbl { font-size: 9px; color: var(--text-muted); margin-top: 2px; }
+
+.gauge-bar { height: 6px; border-radius: 4px; background: var(--card-border); margin-top: 8px; overflow: hidden; }
+.gauge-fill { height: 100%; border-radius: 4px; background: var(--primary); transition: width 0.3s; }
+.gauge-fill-warning { background: var(--warning); }
+.gauge-fill-success { background: var(--success); }
+
+.alert-strip { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.4); border-radius: 14px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.alert-strip-text { font-size: 11.5px; color: var(--text-main); font-weight: 600; }
+.alert-strip-sub { font-size: 10px; color: var(--text-sub); margin-top: 1px; }
+</style>
+</head>
+<body>
+<div class="screen">
+  <div class="ops-header-bar">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="icon-sq"><ion-icon name="shield-checkmark-outline"></ion-icon></div>
+      <div>
+        <div class="header-title">Giám Sát</div>
+        <div class="header-sub"><span class="live-dot"></span>SCADA Live · Cập nhật 5 giây</div>
+      </div>
+    </div>
+    <div onclick="navigateParent('home')" style="font-size:11px;color:var(--primary);font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px"><ion-icon name="home-outline" style="font-size:16px"></ion-icon></div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-val" style="color:var(--primary)">48.950 <span class="stat-unit">m³</span></div>
+      <div class="stat-lbl">SẢN LƯỢNG HÔM NAY</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val" style="color:var(--warning)">9,9 <span class="stat-unit">%</span></div>
+      <div class="stat-lbl">TỶ LỆ NRW</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val" style="color:var(--success)">99,2 <span class="stat-unit">%</span></div>
+      <div class="stat-lbl">CHẤT LƯỢNG</div>
+    </div>
+  </div>
+
+  <div class="alert-strip">
+    <ion-icon name="warning-outline" style="font-size:20px;color:var(--danger);flex-shrink:0"></ion-icon>
+    <div>
+      <div class="alert-strip-text">Phát hiện áp suất bất thường – Trạm A3</div>
+      <div class="alert-strip-sub">Áp suất vượt ngưỡng 3.2 bar · 21:10 06/08/2026</div>
+    </div>
+  </div>
+
+  <div class="section-title"><ion-icon name="water-outline"></ion-icon> Trạm Bơm & Nhà Máy</div>
+
+  <div class="station-card">
+    <div class="station-header">
+      <div>
+        <div class="station-name">🏭 Nhà máy nước Tam Dương</div>
+        <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">Cập nhật: 21:09</div>
+      </div>
+      <div class="status-online"><ion-icon name="checkmark-circle-outline"></ion-icon> Online</div>
+    </div>
+    <div class="station-metrics">
+      <div class="metric-mini">
+        <div class="metric-mini-val" style="color:var(--primary)">2.4 <span style="font-size:9px">bar</span></div>
+        <div class="metric-mini-lbl">ÁP SUẤT</div>
+        <div class="gauge-bar"><div class="gauge-fill gauge-fill-success" style="width:75%"></div></div>
+      </div>
+      <div class="metric-mini">
+        <div class="metric-mini-val" style="color:var(--success)">1.850 <span style="font-size:9px">m³/h</span></div>
+        <div class="metric-mini-lbl">LƯU LƯỢNG</div>
+        <div class="gauge-bar"><div class="gauge-fill gauge-fill-success" style="width:85%"></div></div>
+      </div>
+      <div class="metric-mini">
+        <div class="metric-mini-val" style="color:var(--success)">0,3 <span style="font-size:9px">mg/L</span></div>
+        <div class="metric-mini-lbl">CLO DƯ</div>
+        <div class="gauge-bar"><div class="gauge-fill" style="width:60%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="station-card">
+    <div class="station-header">
+      <div>
+        <div class="station-name">⚡ Trạm bơm tăng áp A3</div>
+        <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">Cập nhật: 21:08</div>
+      </div>
+      <div class="status-warning"><ion-icon name="warning-outline"></ion-icon> Cảnh báo</div>
+    </div>
+    <div class="station-metrics">
+      <div class="metric-mini">
+        <div class="metric-mini-val" style="color:var(--warning)">3.2 <span style="font-size:9px">bar</span></div>
+        <div class="metric-mini-lbl">ÁP SUẤT</div>
+        <div class="gauge-bar"><div class="gauge-fill gauge-fill-warning" style="width:92%"></div></div>
+      </div>
+      <div class="metric-mini">
+        <div class="metric-mini-val" style="color:var(--text-main)">680 <span style="font-size:9px">m³/h</span></div>
+        <div class="metric-mini-lbl">LƯU LƯỢNG</div>
+        <div class="gauge-bar"><div class="gauge-fill" style="width:55%"></div></div>
+      </div>
+      <div class="metric-mini">
+        <div class="metric-mini-val" style="color:var(--text-main)">78 <span style="font-size:9px">%</span></div>
+        <div class="metric-mini-lbl">CÔNG SUẤT</div>
+        <div class="gauge-bar"><div class="gauge-fill" style="width:78%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="station-card">
+    <div class="station-header">
+      <div>
+        <div class="station-name">💧 Trạm bơm đầu nguồn B1</div>
+        <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">Mất kết nối 21:05</div>
+      </div>
+      <div class="status-offline"><ion-icon name="close-circle-outline"></ion-icon> Offline</div>
+    </div>
+    <div style="font-size:11px;color:var(--text-sub);text-align:center;padding:8px 0">Không có dữ liệu — Đang kiểm tra kết nối SCADA</div>
+  </div>
+
+  <div style="margin-bottom:20px"></div>
+</div>
+</body>
+</html>

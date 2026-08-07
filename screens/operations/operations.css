@@ -1,0 +1,4 @@
+.screen-operations .operations-title { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 14px; }
+.screen-operations .operations-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 16px; margin-bottom: 14px; }
+.screen-operations .op-card-title { font-size: 14px; font-weight: 700; color: #FFFFFF; }
+.screen-operations .op-card-sub { font-size: 11.5px; color: var(--text-sub); margin-top: 4px; }

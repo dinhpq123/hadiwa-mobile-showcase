@@ -1,0 +1,87 @@
+/* EVG GREEN PRESET — SỬ DỤNG CHÍNH XÁC 100% TOKENS TỪ TÀI LIỆU AUDIT EVG */
+
+html[data-theme="evg-green"][data-mode="light"] {
+  --bg-app: #F6F8F5;
+  --bg-secondary: #F8FAFC;
+  --card-bg: #FFFFFF;
+  --card-border: #E2E8F0;
+  --header-bg: rgba(255,255,255,0.96);
+  --card-hero-bg: #F0FDF4;
+  --card-hero-border: #86EFAC;
+
+  --text-main: #0F172A;
+  --text-sub: #475569;
+  --text-muted: #94A3B8;
+
+  --primary: #30BD6F;
+  --primary-hover: #16A34A;
+  --primary-pressed: #15803D;
+  --primary-soft: #DCFCE7;
+  --secondary: #3699FF;
+  --accent: #87FF0B;
+
+  --success: #16A34A;
+  --warning: #EA580C;
+  --danger: #EF4444;
+  --info: #2563EB;
+
+  --alert-danger-bg: #FEE2E2;
+  --alert-danger-border: #FCA5A5;
+  --alert-danger-text: #EF4444;
+
+  --alert-warning-bg: #FFEDD5;
+  --alert-warning-border: #FDBA74;
+  --alert-warning-text: #EA580C;
+
+  --tabbar-bg: #FFFFFF;
+  --tabbar-border: #E2E8F0;
+  --tab-active-bg: #EBF7ED;
+  --tab-active-text: #047857;
+
+  --center-tab-bg: #30BD6F;
+  --center-tab-border: #20B970;
+  --center-tab-text: #0F172A;
+}
+
+html[data-theme="evg-green"][data-mode="dark"] {
+  --bg-app: #090909;
+  --bg-secondary: #1C223F;
+  --card-bg: #151E31;
+  --card-border: #2C384F;
+  --header-bg: #151E31;
+  --card-hero-bg: rgba(48,189,111,0.16);
+  --card-hero-border: rgba(48,189,111,0.34);
+
+  --text-main: #FFFFFF;
+  --text-sub: rgba(255,255,255,0.80);
+  --text-muted: #94A3B8;
+
+  --primary: #30BD6F;
+  --primary-hover: #20B970;
+  --primary-pressed: #15803D;
+  --primary-soft: rgba(48,189,111,0.16);
+  --secondary: #3699FF;
+  --accent: #87FF0B;
+
+  --success: #30BD6F;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --info: #3699FF;
+
+  --alert-danger-bg: rgba(239,68,68,0.16);
+  --alert-danger-border: rgba(239,68,68,0.34);
+  --alert-danger-text: #EF4444;
+
+  --alert-warning-bg: rgba(245,158,11,0.16);
+  --alert-warning-border: rgba(245,158,11,0.34);
+  --alert-warning-text: #F59E0B;
+
+  --tabbar-bg: #151E31;
+  --tabbar-border: #2C384F;
+  --tab-active-bg: rgba(48,189,111,0.18);
+  --tab-active-text: #30BD6F;
+
+  --center-tab-bg: #30BD6F;
+  --center-tab-border: #87FF0B;
+  --center-tab-text: #0F172A;
+}

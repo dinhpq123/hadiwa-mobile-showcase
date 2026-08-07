@@ -1,0 +1,38 @@
+html[data-mode="dark"] {
+  --bg-app: #0d2247;
+  --bg-secondary: #142d59;
+  --card-bg: #142a55;
+  --card-border: rgba(34, 211, 238, 0.2);
+  --header-bg: #142d59;
+  --card-hero-bg: #153063;
+  --card-hero-border: rgba(34, 211, 238, 0.4);
+  
+  --text-main: #ffffff;
+  --text-sub: #cbd5e1;
+  --text-muted: #b4c6e4;
+  
+  --primary: #00f2ff;
+  --primary-soft: rgba(0, 242, 255, 0.15);
+  --secondary: #0d2247;
+  --accent: #2dd4bf;
+  
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #8b5cf6;
+  
+  --alert-danger-bg: rgba(248, 113, 113, 0.1);
+  --alert-danger-border: rgba(248, 113, 113, 0.3);
+  --alert-danger-text: #f87171;
+  
+  --alert-warning-bg: rgba(251, 191, 36, 0.1);
+  --alert-warning-border: rgba(251, 191, 36, 0.3);
+  --alert-warning-text: #fbbf24;
+  
+  --tabbar-bg: rgba(13, 34, 71, 0.95);
+  --tabbar-border: rgba(34, 211, 238, 0.35);
+  --tab-active-bg: rgba(0, 242, 255, 0.12);
+  
+  --floating-btn-bg: linear-gradient(135deg, #00f2ff, #0d2247);
+  --floating-btn-shadow: 0 8px 24px rgba(0, 242, 255, 0.4);
+}

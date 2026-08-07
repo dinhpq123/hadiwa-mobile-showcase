@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Hadiwa — Tài Khoản</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="../../shared/js/theme-receiver.js"></script>
+<link rel="stylesheet" href="../../themes/presets/all-presets.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--bg-app); }
+body { width: 100%; background: var(--bg-app); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+.screen { padding: 14px; }
+
+.profile-top-box { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 18px; }
+.profile-avatar-box { width: 84px; height: 84px; border-radius: 50%; border: 3px solid var(--primary); overflow: hidden; margin-bottom: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.3); }
+.profile-name { font-size: 20px; font-weight: 700; color: var(--text-main); margin-bottom: 2px; }
+.profile-role-sub { font-size: 12px; color: var(--text-sub); margin-bottom: 10px; }
+.tag-blue-fill { padding: 5px 14px; border-radius: 16px; background: var(--secondary-soft); border: 1px solid var(--secondary); font-size: 11px; font-weight: 700; color: var(--secondary); }
+.tag-green-active { padding: 5px 14px; border-radius: 16px; background: var(--primary-soft); border: 1px solid var(--primary); font-size: 11px; font-weight: 700; color: var(--primary); display: inline-flex; align-items: center; gap: 4px; }
+
+.info-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 14px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 14px; }
+.info-item { display: flex; align-items: center; gap: 12px; }
+.info-icon-box { width: 38px; height: 38px; border-radius: 12px; background: var(--primary-soft); border: 1px solid var(--primary); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--primary); flex-shrink: 0; }
+.info-icon-box.icon-secondary { background: var(--secondary-soft); border-color: var(--secondary); color: var(--secondary); }
+.info-icon-box.icon-accent { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.info-val { font-size: 13px; font-weight: 700; color: var(--text-main); font-family: 'Roboto Mono', monospace; }
+.info-lbl { font-size: 10.5px; color: var(--text-sub); margin-top: 1px; }
+
+.settings-group-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+.settings-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; overflow: hidden; margin-bottom: 20px; }
+.settings-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border-bottom: 1px solid var(--card-border); cursor: pointer; }
+.settings-item:last-child { border-bottom: none; }
+.settings-icon-box { width: 36px; height: 36px; border-radius: 10px; background: var(--primary-soft); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--primary); flex-shrink: 0; }
+.settings-title { font-size: 13px; font-weight: 700; color: var(--text-main); }
+.settings-sub { font-size: 10.5px; color: var(--text-sub); margin-top: 1px; }
+
+.switch-toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
+.switch-toggle input { opacity: 0; width: 0; height: 0; }
+.slider-round { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--card-border); transition: .3s; border-radius: 24px; }
+.slider-round:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background: white; transition: .3s; border-radius: 50%; }
+input:checked + .slider-round { background-color: var(--primary); }
+input:checked + .slider-round:before { transform: translateX(20px); }
+</style>
+</head>
+<body>
+<div class="screen">
+  <div class="profile-top-box">
+    <div class="profile-avatar-box">
+      <img src="../../_archive/hadiwa-mobile/assets/image-icon/avatar_director.png" style="width:100%;height:100%;object-fit:cover" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'"/>
+    </div>
+    <div class="profile-name">Nguyễn Đức Minh</div>
+    <div class="profile-role-sub">Quản lý</div>
+    <div style="display:flex;gap:8px">
+      <div class="tag-blue-fill">Tổng Giám đốc</div>
+      <div class="tag-green-active">● Đang hoạt động</div>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-item">
+      <div class="info-icon-box"><ion-icon name="call-outline"></ion-icon></div>
+      <div><div class="info-val">0903001002</div><div class="info-lbl">Số điện thoại</div></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon-box icon-secondary"><ion-icon name="mail-outline"></ion-icon></div>
+      <div><div class="info-val">minh.nd@hadiwa.vn</div><div class="info-lbl">Email</div></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon-box icon-accent"><ion-icon name="card-outline"></ion-icon></div>
+      <div><div class="info-val">MINH.ND</div><div class="info-lbl">Mã định danh</div></div>
+    </div>
+  </div>
+
+  <div class="settings-group-title">TÀI KHOẢN & CÀI ĐẶT</div>
+  <div class="settings-card">
+    <div class="settings-item">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="settings-icon-box"><ion-icon name="finger-print-outline"></ion-icon></div>
+        <div><div class="settings-title">Bảo mật & Sinh trắc học</div><div class="settings-sub">Nhấn để kích hoạt</div></div>
+      </div>
+      <label class="switch-toggle"><input type="checkbox" checked/><span class="slider-round"></span></label>
+    </div>
+    <div class="settings-item">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="settings-icon-box"><ion-icon name="notifications-outline"></ion-icon></div>
+        <div><div class="settings-title">Cài đặt thông báo</div><div class="settings-sub">Nhận thông báo PCTT & vận hành</div></div>
+      </div>
+      <label class="switch-toggle"><input type="checkbox" checked/><span class="slider-round"></span></label>
+    </div>
+    <div class="settings-item" onclick="alert('Mở cài đặt giao diện')">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="settings-icon-box"><ion-icon name="color-palette-outline"></ion-icon></div>
+        <div><div class="settings-title">Giao diện & Hiển thị</div><div class="settings-sub">Tùy biến Preset & Light/Dark mode</div></div>
+      </div>
+      <ion-icon name="chevron-forward-outline" style="color:var(--text-sub);font-size:16px"></ion-icon>
+    </div>
+  </div>
+
+  <div class="settings-group-title">THÔNG TIN ỨNG DỤNG</div>
+  <div class="settings-card">
+    <div class="settings-item">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="settings-icon-box"><ion-icon name="information-circle-outline"></ion-icon></div>
+        <div><div class="settings-title">Về ứng dụng Hadiwa Mobile</div><div class="settings-sub">Phiên bản v1.0.8</div></div>
+      </div>
+      <span style="font-size:11px;color:var(--text-sub);font-family:'Roboto Mono',monospace">v1.0.8</span>
+    </div>
+    <div class="settings-item" onclick="alert('Đã đăng xuất!')">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="settings-icon-box" style="background:rgba(239,68,68,0.15);color:var(--danger)"><ion-icon name="log-out-outline"></ion-icon></div>
+        <div><div class="settings-title" style="color:var(--danger)">Đăng xuất tài khoản</div><div class="settings-sub">Thoát khỏi phiên làm việc</div></div>
+      </div>
+      <ion-icon name="chevron-forward-outline" style="color:var(--danger);font-size:16px"></ion-icon>
+    </div>
+  </div>
+</div>
+</body>
+</html>

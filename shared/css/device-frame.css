@@ -1,0 +1,7 @@
+.mobile-device { width: 390px; height: 844px; background: var(--bg-app); border-radius: 48px; border: 10px solid #1c1936; box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 0 2px rgba(255,255,255,0.1); position: relative; overflow: hidden; display: flex; flex-direction: column; transition: background var(--tr); }
+.status-bar { height: 44px; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 600; color: var(--text-main); position: absolute; top: 0; left: 0; right: 0; z-index: 1001; }
+.mobile-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 125px; height: 30px; background: #000; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; z-index: 1000; display: flex; justify-content: center; align-items: center; }
+.mobile-camera { width: 12px; height: 12px; background: #111; border-radius: 50%; border: 1px solid #222; }
+.mobile-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; padding-top: 44px; position: relative; }
+.screen-scroll-container { flex: 1; overflow-y: auto; padding: 16px; padding-bottom: 110px; }
+::-webkit-scrollbar { width: 0; }

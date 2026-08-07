@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Hadiwa — Phê Duyệt</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="../../shared/js/theme-receiver.js"></script>
+<link rel="stylesheet" href="../../themes/presets/all-presets.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--bg-app); }
+body { width: 100%; background: var(--bg-app); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+.screen { padding: 14px; }
+
+.approvals-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.icon-sq { width: 44px; height: 44px; border-radius: 14px; background: var(--primary-soft); border: 1px solid var(--primary); display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--primary); flex-shrink: 0; }
+.header-title { font-size: 18px; font-weight: 700; color: var(--text-main); }
+.header-sub { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
+.bell-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--primary-soft); display: flex; align-items: center; justify-content: center; position: relative; color: var(--text-main); border: 1px solid var(--card-border); cursor: pointer; }
+.bell-badge { position: absolute; top: 1px; right: 1px; background: var(--danger); color: #fff; font-size: 9px; font-weight: 700; width: 15px; height: 15px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+.search-row { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; }
+.search-box { flex: 1; position: relative; }
+.search-input { width: 100%; padding: 12px 14px 12px 38px; border-radius: 16px; background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main); font-size: 12px; outline: none; }
+.search-input::placeholder { color: var(--text-muted); }
+.search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 16px; }
+.filter-btn { width: 44px; height: 44px; border-radius: 14px; background: var(--card-bg); border: 1px solid var(--card-border); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--secondary); font-size: 20px; flex-shrink: 0; }
+
+.tabs-row { display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; scrollbar-width: none; }
+.tab-pill { display: flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 16px; font-size: 11.5px; font-weight: 600; cursor: pointer; white-space: nowrap; border: 1px solid transparent; flex-shrink: 0; }
+.tab-pill-pending { background: var(--primary-soft); border-color: var(--primary); color: var(--primary); }
+.tab-pill-approved { background: rgba(16,185,129,0.12); border-color: rgba(16,185,129,0.3); color: var(--success); }
+.tab-pill-rejected { background: rgba(239,68,68,0.12); border-color: rgba(239,68,68,0.3); color: var(--danger); }
+.tab-pill-all { background: var(--secondary-soft); border-color: var(--secondary); color: var(--secondary); }
+.tab-pill.active { border-width: 1.5px; font-weight: 700; }
+
+.approval-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 16px; margin-bottom: 14px; }
+.priority-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 12px; font-size: 10.5px; font-weight: 700; }
+.priority-urgent { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: var(--danger); }
+.priority-normal { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.4); color: var(--warning); }
+.time-text { font-size: 10px; color: var(--text-sub); font-family: 'Roboto Mono', monospace; }
+.card-title { font-size: 15px; font-weight: 700; color: var(--text-main); flex: 1; line-height: 1.35; cursor: pointer; }
+.code-tag { font-size: 10.5px; font-weight: 700; color: var(--primary); font-family: 'Roboto Mono', monospace; }
+.card-desc { font-size: 11.5px; color: var(--text-sub); margin: 6px 0 12px; line-height: 1.45; }
+.price-val { font-size: 12.5px; font-weight: 700; color: var(--success); }
+.tag-item { padding: 5px 12px; border-radius: 12px; background: var(--primary-soft); font-size: 11px; color: var(--primary); display: inline-flex; align-items: center; gap: 4px; margin-right: 6px; margin-bottom: 4px; border: 1px solid var(--primary); font-weight: 600; }
+.tag-item.tag-secondary { background: var(--secondary-soft); border-color: var(--secondary); color: var(--secondary); }
+.tag-item.tag-accent { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+
+.btn-approve { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 12px; border-radius: 14px; background: var(--primary); color: #0F172A; font-size: 12px; font-weight: 700; border: none; cursor: pointer; }
+.btn-reject { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 12px; border-radius: 14px; background: var(--primary-soft); border: 1px solid var(--card-border); color: var(--danger); font-size: 12px; font-weight: 700; cursor: pointer; }
+.security-footer { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 10px; color: var(--text-muted); margin-top: 4px; }
+
+.status-badge-approved { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; border-radius: 12px; font-size: 12px; font-weight: 700; color: var(--success); background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); margin-top: 6px; }
+.status-badge-rejected { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; border-radius: 12px; font-size: 12px; font-weight: 700; color: var(--danger); background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="screen">
+  <div class="approvals-header">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="icon-sq"><ion-icon name="newspaper-outline"></ion-icon></div>
+      <div>
+        <div class="header-title">Trung tâm Phê duyệt</div>
+        <div class="header-sub">2 tờ trình chờ duyệt · Hôm nay</div>
+      </div>
+    </div>
+    <div onclick="navigateParent('home')" class="bell-btn">
+      <ion-icon name="notifications-outline" style="font-size:20px"></ion-icon>
+      <div class="bell-badge">2</div>
+    </div>
+  </div>
+
+  <div class="search-row">
+    <div class="search-box">
+      <ion-icon name="search-outline" class="search-icon"></ion-icon>
+      <input type="text" class="search-input" placeholder="Tìm kiếm tờ trình..."/>
+    </div>
+    <div class="filter-btn"><ion-icon name="options-outline"></ion-icon></div>
+  </div>
+
+  <div class="tabs-row">
+    <div class="tab-pill tab-pill-pending active" id="pill-pending" onclick="setTab('pending')"><ion-icon name="alert-circle-outline"></ion-icon> Chờ duyệt (2)</div>
+    <div class="tab-pill tab-pill-approved" id="pill-approved" onclick="setTab('approved')"><ion-icon name="checkmark-circle-outline"></ion-icon> Đã duyệt (1)</div>
+    <div class="tab-pill tab-pill-rejected" id="pill-rejected" onclick="setTab('rejected')"><ion-icon name="close-circle-outline"></ion-icon> Từ chối (1)</div>
+    <div class="tab-pill tab-pill-all" id="pill-all" onclick="setTab('all')"><ion-icon name="layers-outline"></ion-icon> Tất cả (4)</div>
+  </div>
+
+  <div id="sec-pending">
+    <div class="approval-card" id="card-001">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="priority-badge priority-urgent"><ion-icon name="warning-outline"></ion-icon> Ưu tiên cao</div>
+        <span class="time-text">21:10 06/08/2026</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-top:10px">
+        <div class="card-title" onclick="navigateParent('approvalDetail', {id:'TT-2026-001'})">Đề xuất mua sắm vật tư xử lý nước Trạm bơm A</div>
+        <span class="code-tag">TT-2026-001</span>
+      </div>
+      <div class="card-desc">Mua sắm bổ sung 500kg hóa chất Cloramin B phục vụ công tác tiệt trùng nước sạch quý 3/2026.</div>
+      <div style="font-size:11.5px;color:var(--text-sub);margin-bottom:12px">Đơn giá: <span class="price-val">15.000.000 VNĐ</span></div>
+      <div style="margin-bottom:14px">
+        <span class="tag-item">Kỹ thuật</span>
+        <span class="tag-item"><ion-icon name="person-outline"></ion-icon> Lê Văn Cường</span>
+        <span class="tag-item"><ion-icon name="stats-chart-outline"></ion-icon> 15.000.000 đ</span>
+      </div>
+      <div style="display:flex;gap:10px;margin-bottom:12px">
+        <button class="btn-approve" onclick="approveRecord('card-001')"><ion-icon name="checkmark-outline"></ion-icon> Phê duyệt</button>
+        <button class="btn-reject" onclick="rejectRecord('card-001')"><ion-icon name="close-outline"></ion-icon> Từ chối</button>
+      </div>
+      <div class="security-footer"><ion-icon name="lock-closed-outline"></ion-icon> Xác thực Face ID / Vân tay</div>
+    </div>
+
+    <div class="approval-card" id="card-002">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="priority-badge priority-urgent"><ion-icon name="warning-outline"></ion-icon> Ưu tiên cao</div>
+        <span class="time-text">19:10 06/08/2026</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-top:10px">
+        <div class="card-title" onclick="navigateParent('approvalDetail', {id:'TT-2026-002'})">Yêu cầu sửa chữa máy bơm ly tâm số 2</div>
+        <span class="code-tag">TT-2026-002</span>
+      </div>
+      <div class="card-desc">Máy bơm số 2 gặp hiện tượng rung lắc mạnh và phát ra tiếng ồn lớn khi vận hành. Cần thay vòng bi gấp.</div>
+      <div style="font-size:11.5px;color:var(--text-sub);margin-bottom:12px">Đơn giá: <span class="price-val">4.500.000 VNĐ</span></div>
+      <div style="margin-bottom:14px">
+        <span class="tag-item">Vận hành</span>
+        <span class="tag-item"><ion-icon name="person-outline"></ion-icon> Nguyễn Văn Hùng</span>
+      </div>
+      <div style="display:flex;gap:10px;margin-bottom:12px">
+        <button class="btn-approve" onclick="approveRecord('card-002')"><ion-icon name="checkmark-outline"></ion-icon> Phê duyệt</button>
+        <button class="btn-reject" onclick="rejectRecord('card-002')"><ion-icon name="close-outline"></ion-icon> Từ chối</button>
+      </div>
+      <div class="security-footer"><ion-icon name="lock-closed-outline"></ion-icon> Xác thực Face ID / Vân tay</div>
+    </div>
+  </div>
+
+  <div id="sec-approved" style="display:none">
+    <div class="approval-card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="priority-badge priority-normal"><ion-icon name="ellipse-outline"></ion-icon> Bình thường</div>
+        <span class="time-text">21:58 05/08/2026</span>
+      </div>
+      <div class="card-title" style="margin:10px 0 6px">Phê duyệt kế hoạch xét nghiệm mẫu nước định kỳ</div>
+      <div class="card-desc">Thực hiện lấy mẫu xét nghiệm tại Nhà máy nước Tam Dương.</div>
+      <div class="status-badge-approved"><ion-icon name="checkmark-circle-outline"></ion-icon> Đã phê duyệt</div>
+    </div>
+  </div>
+
+  <div id="sec-rejected" style="display:none">
+    <div class="approval-card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="priority-badge priority-urgent"><ion-icon name="warning-outline"></ion-icon> Ưu tiên cao</div>
+        <span class="time-text">09:58 03/08/2026</span>
+      </div>
+      <div class="card-title" style="margin:10px 0 6px">Mua phần mềm SCADA giám sát từ xa</div>
+      <div class="card-desc">Trang bị key bản quyền phần mềm SCADA cho 10 trạm bơm tăng áp.</div>
+      <div class="status-badge-rejected"><ion-icon name="close-circle-outline"></ion-icon> Đã từ chối</div>
+    </div>
+  </div>
+</div>
+<script>
+function setTab(tab) {
+  document.querySelectorAll('.tab-pill').forEach(el => el.classList.remove('active'));
+  document.getElementById('pill-' + tab).classList.add('active');
+  document.getElementById('sec-pending').style.display = (tab==='pending'||tab==='all') ? 'block' : 'none';
+  document.getElementById('sec-approved').style.display = (tab==='approved'||tab==='all') ? 'block' : 'none';
+  document.getElementById('sec-rejected').style.display = (tab==='rejected'||tab==='all') ? 'block' : 'none';
+}
+function approveRecord(id) {
+  if(confirm('Xác thực Face ID / Vân tay để phê duyệt?')) {
+    var c = document.getElementById(id);
+    c.style.opacity = '0'; c.style.transition = 'opacity 0.3s';
+    setTimeout(() => { c.remove(); }, 300);
+  }
+}
+function rejectRecord(id) {
+  var r = prompt('Lý do từ chối:');
+  if(r) {
+    var c = document.getElementById(id);
+    c.style.opacity = '0'; c.style.transition = 'opacity 0.3s';
+    setTimeout(() => { c.remove(); }, 300);
+  }
+}
+</script>
+</body>
+</html>

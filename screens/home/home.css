@@ -1,0 +1,168 @@
+body, html {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--bg-app) !important;
+  display: block !important;
+  overflow-x: hidden !important;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-main);
+}
+
+.screen-home { 
+  background: var(--bg-app); 
+  width: 100% !important; 
+  padding: 16px; 
+  box-sizing: border-box !important; 
+  display: block !important;
+}
+
+/* Section 1: Header Card */
+.screen-home .home-header-card { 
+  background: var(--header-bg); 
+  border-radius: 24px; 
+  padding: 16px; 
+  margin-bottom: 14px; 
+  position: relative; 
+  border: 1px solid var(--card-border); 
+  width: 100% !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+
+.screen-home .greeting-title { font-size: 12.5px; color: var(--text-sub); display: flex; align-items: center; gap: 4px; font-weight: 500; }
+.screen-home .user-fullname { font-size: 21px; font-weight: 700; color: var(--text-main); margin-top: 3px; margin-bottom: 8px; letter-spacing: -0.3px; }
+.screen-home .header-top-row { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.screen-home .role-badge-row { display: flex; align-items: center; gap: 8px; }
+.screen-home .role-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 12px; border-radius: 20px; background: rgba(124, 58, 237, 0.2); border: 1px solid #7C3AED; font-size: 11px; font-weight: 700; color: #C4B5FD; }
+.screen-home .date-str { font-size: 11px; color: var(--text-sub); font-family: 'Roboto Mono', monospace; font-weight: 500; }
+
+.screen-home .header-avatar-box { width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--primary); overflow: hidden; background: #2B2353; display: flex; align-items: center; justify-content: center; text-decoration: none; flex-shrink: 0; box-shadow: 0 0 10px rgba(0,242,255,0.3); }
+.screen-home .bell-icon-box { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer; text-decoration: none; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1); }
+.screen-home .bell-badge { position: absolute; top: 1px; right: 1px; background: var(--danger); color: #fff; font-size: 9px; font-weight: 700; width: 15px; height: 15px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+/* Section 2: AI Hero Card */
+.screen-home .ai-hero-card { 
+  background: var(--card-hero-bg); 
+  border: 1px solid var(--card-hero-border); 
+  border-radius: 20px; 
+  padding: 14px; 
+  margin-bottom: 12px; 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  cursor: pointer; 
+  text-decoration: none; 
+  color: inherit; 
+  width: 100% !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+.screen-home .ai-hero-mascot-box { width: 44px; height: 44px; border-radius: 50%; background: radial-gradient(circle, rgba(0,242,255,0.3) 0%, rgba(13,34,71,0.9) 100%); border: 1.5px solid var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 0 12px rgba(0,242,255,0.4); }
+.screen-home .ai-hero-title { font-size: 13px; font-weight: 700; color: var(--primary); letter-spacing: 0.5px; }
+.screen-home .ai-hero-desc { font-size: 11px; color: var(--text-sub); margin-top: 3px; line-height: 1.4; }
+
+/* Section 3: Smart Alerts */
+.screen-home .smart-alert-card { 
+  border-radius: 16px; 
+  padding: 12px 14px; 
+  margin-bottom: 10px; 
+  display: flex; 
+  gap: 12px; 
+  align-items: flex-start; 
+  position: relative; 
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+.screen-home .smart-alert-danger { background: var(--alert-danger-bg); border: 1px solid var(--alert-danger-border); }
+.screen-home .smart-alert-warning { background: var(--alert-warning-bg); border: 1px solid var(--alert-warning-border); }
+.screen-home .alert-icon-circle { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.screen-home .alert-title { font-size: 12px; font-weight: 700; }
+.screen-home .alert-sub { font-size: 10.5px; color: var(--text-sub); margin-top: 2px; }
+.screen-home .alert-close { position: absolute; top: 12px; right: 12px; font-size: 14px; color: var(--text-muted); cursor: pointer; }
+
+/* Section 4: Time Filter */
+.screen-home .filter-section-title { font-size: 12px; font-weight: 700; color: var(--text-sub); display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+.screen-home .year-pills-row { display: flex; gap: 6px; justify-content: flex-end; margin-bottom: 8px; }
+.screen-home .year-pill { padding: 5px 12px; border-radius: 12px; font-size: 11px; font-weight: 600; color: var(--text-sub); background: rgba(255,255,255,0.06); cursor: pointer; border: 1px solid transparent; }
+.screen-home .year-pill.active { background: var(--primary); color: #071629; font-weight: 700; border-color: var(--primary); }
+
+.screen-home .month-pills-row { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 16px; padding-bottom: 4px; width: 100%; scrollbar-width: none; }
+.screen-home .month-pill { padding: 8px 16px; border-radius: 16px; font-size: 11px; font-weight: 600; color: var(--text-sub); background: var(--card-bg); border: 1px solid var(--card-border); white-space: nowrap; cursor: pointer; flex-shrink: 0; }
+.screen-home .month-pill.active { background: var(--primary-soft); border-color: var(--primary); color: var(--primary); font-weight: 700; }
+
+/* Section 5: KPI Grid */
+.screen-home .kpi-title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; margin-top: 6px; width: 100%; }
+.screen-home .kpi-title { font-size: 15px; font-weight: 700; color: var(--text-main); letter-spacing: -0.2px; }
+.screen-home .kpi-link { font-size: 11.5px; color: var(--primary); font-weight: 600; cursor: pointer; }
+
+.screen-home .kpi-grid-6 { 
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important; 
+  margin-bottom: 20px !important; 
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+.screen-home .kpi-card-box { 
+  background: var(--card-bg); 
+  border: 1px solid var(--card-border); 
+  border-radius: 20px; 
+  padding: 14px; 
+  position: relative; 
+  width: calc(50% - 5px) !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.screen-home .kpi-box-title { font-size: 10px; font-weight: 700; color: var(--text-sub); letter-spacing: 0.5px; text-transform: uppercase; }
+.screen-home .kpi-box-val { font-size: 22px; font-weight: 700; color: var(--text-main); margin-top: 6px; font-family: 'Roboto Mono', monospace; }
+.screen-home .kpi-box-sub { font-size: 10px; font-weight: 600; margin-top: 4px; }
+.screen-home .kpi-box-icon-square { position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+
+/* Section 6: Quick Actions */
+.screen-home .quick-actions-title { font-size: 13.5px; font-weight: 700; color: var(--text-main); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+.screen-home .quick-actions-grid { 
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important; 
+  margin-bottom: 22px !important; 
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+.screen-home .action-btn-pill { 
+  background: var(--primary-soft); 
+  border: 1px solid var(--primary-border); 
+  border-radius: 22px; 
+  padding: 12px 10px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 8px; 
+  font-size: 11.5px; 
+  font-weight: 700; 
+  color: var(--text-main); 
+  cursor: pointer; 
+  text-decoration: none; 
+  width: calc(50% - 5px) !important; 
+  box-sizing: border-box !important; 
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+/* Section 7: Pending Strip */
+.screen-home .section-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; width: 100%; }
+.screen-home .section-title { font-size: 13.5px; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.5px; }
+.screen-home .section-link { font-size: 11px; color: var(--primary); font-weight: 600; cursor: pointer; text-decoration: none; }
+
+.screen-home .pending-strip-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 18px; padding: 14px; display: flex; align-items: center; gap: 12px; margin-bottom: 20px; cursor: pointer; text-decoration: none; color: inherit; width: 100% !important; box-sizing: border-box !important; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+.screen-home .strip-icon-box { width: 40px; height: 40px; border-radius: 12px; background: rgba(251,191,36,0.15); border: 1px solid var(--warning); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--warning); flex-shrink: 0; }
+.screen-home .strip-title { font-size: 12.5px; font-weight: 700; color: var(--text-main); }
+.screen-home .strip-sub { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
+
+/* Section 8: Feed */
+.screen-home .feed-box-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 14px; margin-bottom: 14px; width: 100% !important; box-sizing: border-box !important; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+.screen-home .feed-item-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); width: 100%; }
+.screen-home .feed-item-row:last-child { border-bottom: none; }
+.screen-home .feed-icon-box { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+.screen-home .feed-title { font-size: 12px; font-weight: 700; color: var(--text-main); }
+.screen-home .feed-sub { font-size: 10.5px; color: var(--text-sub); margin-top: 2px; }
+.screen-home .feed-time { font-size: 9.5px; color: var(--text-muted); margin-top: 3px; }

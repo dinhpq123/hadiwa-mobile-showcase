@@ -1,0 +1,2 @@
+.floating-settings-btn { position: absolute; bottom: 82px; right: 16px; width: 48px; height: 48px; border-radius: 50%; background: var(--floating-btn-bg); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: var(--floating-btn-shadow); z-index: 880; cursor: pointer; border: 2px solid rgba(255,255,255,0.4); text-decoration: none; }
+.floating-settings-btn svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 2.2; }

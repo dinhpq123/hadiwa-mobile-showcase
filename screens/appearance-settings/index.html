@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="hadiwa-original" data-mode="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Hadiwa Mobile — Cấu Hình Giao Diện</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+<script src="../../shared/js/theme-manager.js"></script>
+
+<link rel="stylesheet" href="../../themes/tokens.css">
+<link rel="stylesheet" href="../../themes/modes/dark.css">
+<link rel="stylesheet" href="../../themes/modes/light.css">
+<link rel="stylesheet" href="../../themes/presets/evg-green.css">
+<link rel="stylesheet" href="../../shared/css/reset.css">
+<link rel="stylesheet" href="../../shared/css/device-frame.css">
+<link rel="stylesheet" href="../../shared/css/components.css">
+<link rel="stylesheet" href="../../shared/css/bottom-tab.css">
+</head>
+<body class="prototype-page">
+
+<div class="prototype-controls">
+  <span style="font-size:11px;font-weight:700;color:#00F2FF">📱 MOBILE SHOWCASE</span>
+  <select id="presetSelect" onchange="applyPreset(this.value)">
+    <option value="hadiwa-original">Hadiwa Original</option>
+    <option value="violet-intelligence">Trí tuệ Tím</option>
+    <option value="ocean-technology">Hạ tầng Đại dương</option>
+    <option value="emerald-water">Nước Ngọc lục</option>
+    <option value="evg-green">EVG Xanh năng lượng ⭐</option>
+  </select>
+  <select id="modeSelect" onchange="applyMode(this.value)">
+    <option value="dark">Dark Mode</option>
+    <option value="light">Light Mode</option>
+  </select>
+</div>
+
+<div class="mobile-device">
+  <div class="status-bar"><span>8:24</span><div style="display:flex;gap:4px"><span>📶</span><span>📡</span><span>🔋</span></div></div>
+  <div class="mobile-notch"><div class="mobile-camera"></div></div>
+
+  <div class="mobile-body">
+    <div class="screen-scroll-container app-shell">
+      <div style="margin-bottom:14px"><button style="background:rgba(255,255,255,0.1);color:#fff;border:none;padding:8px 14px;border-radius:12px;cursor:pointer;font-weight:700" onclick="history.back()">← Quay lại</button></div>
+      
+      <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:20px;padding:16px;margin-bottom:14px">
+        <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:12px">Cấu hình Brand Presets</div>
+        <button style="width:100%;padding:12px;border-radius:14px;background:#30BD6F;color:#fff;font-weight:700;border:none;cursor:pointer;margin-bottom:8px" onclick="applyPreset('evg-green')">Kích hoạt EVG Green ⭐</button>
+        <button style="width:100%;padding:12px;border-radius:14px;background:#7C3AED;color:#fff;font-weight:700;border:none;cursor:pointer;margin-bottom:8px" onclick="applyPreset('violet-intelligence')">Kích hoạt Trí tuệ Tím</button>
+        <button style="width:100%;padding:12px;border-radius:14px;background:#00F2FF;color:#071629;font-weight:700;border:none;cursor:pointer" onclick="applyPreset('hadiwa-original')">Kích hoạt Hadiwa Original</button>
+      </div>
+
+      <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:20px;padding:16px">
+        <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:12px">Chế độ Hiển thị</div>
+        <div style="display:flex;gap:10px">
+          <button style="flex:1;padding:12px;border-radius:14px;background:#161e38;border:1px solid #6366F1;color:#fff;font-weight:700;cursor:pointer" onclick="applyMode('dark')">Dark Mode</button>
+          <button style="flex:1;padding:12px;border-radius:14px;background:#fff;color:#000;font-weight:700;cursor:pointer" onclick="applyMode('light')">Light Mode</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
